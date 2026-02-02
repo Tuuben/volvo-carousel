@@ -1,6 +1,7 @@
 # Task overview
 
-[Video here]
+https://github.com/user-attachments/assets/c3ec69eb-cc34-40b2-b1d7-b1bf32aec0b3
+
 
 # Tech stack
 - Expo (Starter template)
@@ -23,3 +24,4 @@
 - Spent some time trying to see if I could get smooth image transitions between routes. In the time frame could not get static feature flag for reanimated's experimental shared element transition working. Not sure if not supported with expo without ejections since required pod install. Also looked into expo's upcoming Apple.Zoom feature that could solve this but not available before v55 (currently 54).
 
 # Work time for task completion
+<img width="293" height="167" alt="Screenshot 2026-02-02 at 21 04 46" src="https://github.com/user-attachments/assets/1cff72f9-60fd-4335-b901-5b6bfb33e8bf" />
