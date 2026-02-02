@@ -4,7 +4,7 @@ https://github.com/user-attachments/assets/c3ec69eb-cc34-40b2-b1d7-b1bf32aec0b3
 
 
 # Tech stack
-- Expo (Starter template)
+- Expo (Default Starter template)
 - React query (mock api)
 - Typescript 
 - Reanimated
