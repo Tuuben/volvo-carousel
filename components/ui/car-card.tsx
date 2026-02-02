@@ -2,7 +2,7 @@ import { CarModel } from "@/api";
 import { PLACEHOLDER_IMAGE_PATHS } from "@/constants/mocks";
 import { useEffect } from "react";
 import { ImageSourcePropType, StyleSheet, Text, View, ViewProps } from "react-native";
-import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import Animated, { Easing, interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import { Gutter } from "../gutter";
 
 type CarCardProps = ViewProps & {
@@ -18,19 +18,17 @@ export const CarCard = ({ car, cardWidth, imageHeight, isActive }: CarCardProps)
 
     useEffect(() => {
         textAnimationValue.value = withTiming(isActive ? 1 : 0, { duration: 200 });
-        imageAnimationValue.value = withTiming(isActive ? 1 : 0, { duration: 380, easing: Easing.sin }); 
+        imageAnimationValue.value = withTiming(isActive ? 1 : 0, { duration: 300, easing: Easing.sin }); 
     }, [isActive, textAnimationValue, imageAnimationValue]);
 
     const animatedTextStyle = useAnimatedStyle(() => ({
-        color: isActive ? 'black' : 'gray', 
-        transitionDuration: '150ms',
+        color: isActive ? interpolateColor(textAnimationValue.value, [0, 1], ['gray', 'black']) : 'gray', 
 
     }));
 
     const animatedImageStyle = useAnimatedStyle(() => ({
         transform: [{ scale: interpolate(imageAnimationValue.value, [0, 1], [1, 1.08]) }],
         opacity: interpolate(imageAnimationValue.value, [0, 1], [0.6, 1]),
-        transitionDuration: '300ms',
     }));
 
     return (

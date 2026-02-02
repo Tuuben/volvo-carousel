@@ -1,9 +1,9 @@
 import { CarModel } from "@/api";
 import { PLACEHOLDER_BLUR_HASH, TMP_PAGE_PADDING } from "@/constants/mocks";
 import { Image } from "expo-image";
-import { navigate } from "expo-router/build/global-state/routing";
-import { useCallback, useMemo, useRef, useState } from "react";
-import { FlatList, ScrollView, StyleSheet, useWindowDimensions, View, ViewToken } from "react-native";
+import { Fragment, useCallback, useMemo, useRef, useState } from "react";
+import { ScrollView, StyleSheet, useWindowDimensions, View, ViewToken } from "react-native";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { Gutter } from "../gutter";
 import { CarCard } from "./car-card";
 import { CardLink } from "./card-link";
@@ -38,11 +38,11 @@ export const CarCarousel = ({ cars, isLoading }: CarCarouselProps) => {
 
             // first, Hug left
             if (index === 0) {
-                return 0; 
+                return 0;
             }
             // last, hug right
             if (index === itemCount - 1) {
-                return maxScroll; 
+                return maxScroll;
             }
             return Math.max(0, Math.min(itemPosition - centerOffset, maxScroll));
         });
@@ -71,21 +71,28 @@ export const CarCarousel = ({ cars, isLoading }: CarCarouselProps) => {
     );
 
     return (
-        <View> 
+        <View>
             {isLoading ? (
                 <ScrollView horizontal style={styles.loadingContainer}>
                     {Array.from({ length: NUM_LOADING_CARDS }).map((_, index) => (
-                        <View key={index} style={styles.loadingCardContainer}>
-                            <Image 
-                                placeholder={{ blurhash: PLACEHOLDER_BLUR_HASH }}
-                                style={styles.loadingCard}
-                                contentFit="cover"
-                            />
-                        </View>
+                        <Fragment key={index}>
+                            <Animated.View 
+                                entering={FadeIn.duration(200)}
+                                exiting={FadeOut.duration(200)}
+                                style={styles.loadingCardContainer}>
+                                <Image
+                                    placeholder={{ blurhash: PLACEHOLDER_BLUR_HASH }}
+                                    style={styles.loadingCard}
+                                    contentFit="cover"
+                                />
+                            </Animated.View>
+                            <Gutter size={ITEM_SEPARATOR} />
+                        </Fragment>
                     ))}
                 </ScrollView>
             ) : (
-                <FlatList
+                <Animated.FlatList
+                    entering={FadeIn.duration(200)}
                     horizontal
                     data={cars}
                     renderItem={renderListItem}
@@ -104,7 +111,7 @@ export const CarCarousel = ({ cars, isLoading }: CarCarouselProps) => {
             <Gutter size={16} />
             <View style={styles.actionsContainer}>
                 <CardLink onPress={() => { }}>LEARN</CardLink>
-                <CardLink onPress={() => { navigate("/modal") }} isShining>SHOP</CardLink>
+                <CardLink onPress={() => { }}>SHOP</CardLink>
             </View>
             <Gutter size={24} />
             <CarouselPagination currentIndex={activeIndex} totalItems={cars?.length || 0} />
