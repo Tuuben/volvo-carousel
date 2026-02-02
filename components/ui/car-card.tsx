@@ -22,8 +22,7 @@ export const CarCard = ({ car, cardWidth, imageHeight, isActive }: CarCardProps)
     }, [isActive, textAnimationValue, imageAnimationValue]);
 
     const animatedTextStyle = useAnimatedStyle(() => ({
-        color: isActive ? interpolateColor(textAnimationValue.value, [0, 1], ['gray', 'black']) : 'gray', 
-
+        color: interpolateColor(textAnimationValue.value, [0, 1], ['gray', 'black']), 
     }));
 
     const animatedImageStyle = useAnimatedStyle(() => ({
