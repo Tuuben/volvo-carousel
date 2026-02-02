@@ -1,17 +1,20 @@
 import { Link } from 'expo-router';
-import { StyleSheet } from 'react-native';
-
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+import { StyleSheet, Text, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 export default function ModalScreen() {
   return (
-    <ThemedView style={styles.container}>
-      <ThemedText type="title">This is a modal</ThemedText>
+    <View style={styles.container}>
+      <Text>This is a modal</Text>
+      <Animated.Image
+        source={require('@/assets/images/xc90_recharge.jpg')}
+        style={{ width: '100%', height: 240 }}
+      />
+
       <Link href="/" dismissTo style={styles.link}>
-        <ThemedText type="link">Go to home screen</ThemedText>
+        <Text>Go to home screen</Text>
       </Link>
-    </ThemedView>
+    </View>
   );
 }
 
