@@ -1,50 +1,25 @@
-# Welcome to your Expo app 👋
+# Task overview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[Video here]
 
-## Get started
+# Tech stack
+- Expo (Starter template)
+- React query (mock api)
+- Typescript 
+- Reanimated
 
-1. Install dependencies
+# Implemented
+- Car carousel using provided data through a mock api
+   - Overflowing carousel
+   - Centering items inbetween first/last element. First & last hug the sides
+- Car carousel card animations
+- Pagination indicator & animations "crawling" indicator moving & resizing scale between indexes
+- Shine animation for text to indicate importance, decided to scrap because it looked cheap.
 
-   ```bash
-   npm install
-   ```
+# Not completed
+- Loading state not complete for the carousel, currently renders same blurhash image but has slight snapping when loading in rest of the content. I would add proper loading elements for text & images to match real content. Add blurhash for all images. 
 
-2. Start the app
+# Explored
+- Spent some time trying to see if I could get smooth image transitions between routes. In the time frame could not get static feature flag for reanimated's experimental shared element transition working. Not sure if not supported with expo without ejections since required pod install. Also looked into expo's upcoming Apple.Zoom feature that could solve this but not available before v55 (currently 54).
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# Work time for task completion
